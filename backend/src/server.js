@@ -52,6 +52,11 @@ app.use('/api/enrollments', require('./routes/enrollmentsRoutes'));
 app.use('/api/reviews', require('./routes/reviewsRoutes'));
 app.use('/api/users', require('./routes/usersRoutes'));
 
+// Root route - redirect to health check
+app.get('/', (req, res) => {
+  res.redirect('/api/health');
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'Backend is running' });
